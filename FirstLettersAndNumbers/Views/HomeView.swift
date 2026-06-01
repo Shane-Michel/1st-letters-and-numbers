@@ -9,40 +9,41 @@ struct HomeView: View {
                 VStack(spacing: 34) {
                     Spacer(minLength: 28)
 
-                    VStack(spacing: 12) {
+                    VStack(spacing: 14) {
                         Text("First Letters and Numbers")
-                            .font(.largeTitle.weight(.bold))
+                            .font(.system(.largeTitle, design: .rounded, weight: .bold))
                             .multilineTextAlignment(.center)
-                            .foregroundStyle(SoftColors.ink)
+                            .foregroundStyle(CalmDesign.ColorPalette.warmText)
                             .fixedSize(horizontal: false, vertical: true)
 
-                        Text("Gentle learning for little hands")
-                            .font(.title3.weight(.medium))
-                            .foregroundStyle(SoftColors.mutedInk)
+                        Text("A calm first learning app")
+                            .font(.title3.weight(.semibold))
+                            .foregroundStyle(CalmDesign.ColorPalette.mutedText)
                             .multilineTextAlignment(.center)
                     }
-                    .frame(maxWidth: 520)
+                    .frame(maxWidth: CalmDesign.Layout.screenMaxWidth)
 
                     VStack(spacing: 18) {
                         NavigationLink {
                             LettersView()
                         } label: {
-                            PrimaryNavigationButton(title: "Letters", systemImage: "textformat.abc", color: SoftColors.leaf)
+                            PrimaryNavigationButton(title: "Letters", systemImage: "textformat.abc", color: CalmDesign.ColorPalette.gentleGreen)
                         }
 
                         NavigationLink {
                             NumbersView()
                         } label: {
-                            PrimaryNavigationButton(title: "Numbers", systemImage: "number", color: SoftColors.sky)
+                            PrimaryNavigationButton(title: "Numbers", systemImage: "number", color: CalmDesign.ColorPalette.gentleBlue)
                         }
 
                         NavigationLink {
                             ParentGateView()
                         } label: {
-                            PrimaryNavigationButton(title: "Parents", systemImage: "lock.shield", color: SoftColors.peach)
+                            PrimaryNavigationButton(title: "Parents", systemImage: "lock.shield", color: CalmDesign.ColorPalette.softPeach)
                         }
                     }
                     .buttonStyle(.plain)
+                    .frame(maxWidth: CalmDesign.Layout.controlMaxWidth)
 
                     Spacer(minLength: 28)
                 }

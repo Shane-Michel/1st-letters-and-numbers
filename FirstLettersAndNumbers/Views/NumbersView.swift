@@ -16,17 +16,22 @@ struct NumbersView: View {
             VStack(spacing: 28) {
                 Spacer(minLength: 16)
 
-                LearningPanel {
+                LearningCard(tint: CalmDesign.ColorPalette.gentleBlue) {
+                    ProgressPill(
+                        text: "Number \(currentIndex + 1) of \(numbers.count)",
+                        color: CalmDesign.ColorPalette.gentleBlue
+                    )
+
                     Button {
                         playNumberSound()
                     } label: {
                         Text("\(currentNumber.value)")
-                            .font(.system(size: 140, weight: .bold, design: .rounded))
-                            .foregroundStyle(SoftColors.sky)
-                            .frame(maxWidth: .infinity, minHeight: 190)
+                            .font(.system(size: 164, weight: .bold, design: .rounded))
+                            .foregroundStyle(CalmDesign.ColorPalette.gentleBlue)
+                            .frame(maxWidth: .infinity, minHeight: 220)
                             .background(
                                 RoundedRectangle(cornerRadius: 30, style: .continuous)
-                                    .fill(SoftColors.sky.opacity(0.12))
+                                    .fill(CalmDesign.ColorPalette.gentleBlue.opacity(0.12))
                             )
                     }
                     .buttonStyle(.plain)
@@ -34,7 +39,7 @@ struct NumbersView: View {
 
                     Text(currentNumber.word)
                         .font(.largeTitle.weight(.semibold))
-                        .foregroundStyle(SoftColors.ink)
+                        .foregroundStyle(CalmDesign.ColorPalette.warmText)
 
                     DotCounter(count: currentNumber.value)
                 }
@@ -49,6 +54,7 @@ struct NumbersView: View {
                 Spacer(minLength: 16)
             }
             .padding(24)
+            .frame(maxWidth: CalmDesign.Layout.screenMaxWidth)
         }
         .navigationTitle("Numbers")
         .navigationBarTitleDisplayMode(.inline)
@@ -78,7 +84,7 @@ private struct DotCounter: View {
         LazyVGrid(columns: columns, spacing: 12) {
             ForEach(0..<count, id: \.self) { _ in
                 Circle()
-                    .fill(SoftColors.peach.opacity(0.82))
+                    .fill(CalmDesign.ColorPalette.softPeach.opacity(0.82))
                     .frame(width: 34, height: 34)
                     .accessibilityHidden(true)
             }

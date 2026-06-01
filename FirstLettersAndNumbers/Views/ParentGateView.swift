@@ -28,16 +28,16 @@ struct ParentGateView: View {
             LearningPanel {
                 Image(systemName: "lock.shield")
                     .font(.system(size: 54, weight: .semibold))
-                    .foregroundStyle(SoftColors.peach)
+                    .foregroundStyle(CalmDesign.ColorPalette.softPeach)
                     .accessibilityHidden(true)
 
                 Text("Parent Check")
                     .font(.largeTitle.weight(.bold))
-                    .foregroundStyle(SoftColors.ink)
+                    .foregroundStyle(CalmDesign.ColorPalette.warmText)
 
                 Text("What is 3 + 4?")
                     .font(.title2.weight(.semibold))
-                    .foregroundStyle(SoftColors.mutedInk)
+                    .foregroundStyle(CalmDesign.ColorPalette.mutedText)
 
                 TextField("Answer", text: $answer)
                     .keyboardType(.numberPad)
@@ -47,13 +47,13 @@ struct ParentGateView: View {
                     .frame(maxWidth: 220)
 
                 Button("Continue", action: checkAnswer)
-                    .buttonStyle(SoftControlButtonStyle(color: SoftColors.peach))
+                    .buttonStyle(LargeToddlerButtonStyle(color: CalmDesign.ColorPalette.softPeach, minHeight: 62))
                     .frame(maxWidth: 260)
 
                 if showError {
-                    Text("Please try again.")
+                    Text("Try again.")
                         .font(.headline)
-                        .foregroundStyle(SoftColors.peach)
+                        .foregroundStyle(CalmDesign.ColorPalette.softPeach)
                 }
             }
 
@@ -69,7 +69,7 @@ struct ParentGateView: View {
             LearningPanel {
                 Text("Settings")
                     .font(.largeTitle.weight(.bold))
-                    .foregroundStyle(SoftColors.ink)
+                    .foregroundStyle(CalmDesign.ColorPalette.warmText)
 
                 VStack(spacing: 18) {
                     Toggle("Sound", isOn: $soundEnabled)
@@ -77,12 +77,12 @@ struct ParentGateView: View {
                 }
                 .font(.title3.weight(.semibold))
                 .toggleStyle(.switch)
-                .tint(SoftColors.leaf)
+                .tint(CalmDesign.ColorPalette.gentleGreen)
                 .padding(.horizontal, 8)
 
                 Text("This app does not collect personal data.")
                     .font(.body.weight(.medium))
-                    .foregroundStyle(SoftColors.mutedInk)
+                    .foregroundStyle(CalmDesign.ColorPalette.mutedText)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
