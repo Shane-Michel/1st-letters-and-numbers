@@ -23,7 +23,7 @@ struct LettersView: View {
                     )
 
                     Button {
-                        playLetterSound()
+                        SoundManager.shared.playLetterSound(letter: currentLetter.letter)
                     } label: {
                         Text(currentLetter.letter)
                             .font(.system(size: 176, weight: .bold, design: .rounded))
@@ -62,16 +62,14 @@ struct LettersView: View {
 
     private func showPreviousLetter() {
         guard currentIndex > 0 else { return }
+        SoundManager.shared.playTapSound()
         currentIndex -= 1
     }
 
     private func showNextLetter() {
         guard currentIndex < letters.count - 1 else { return }
+        SoundManager.shared.playTapSound()
         currentIndex += 1
-    }
-
-    private func playLetterSound() {
-        // Audio will be added in a later MVP pass.
     }
 }
 

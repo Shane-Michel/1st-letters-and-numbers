@@ -23,7 +23,7 @@ struct NumbersView: View {
                     )
 
                     Button {
-                        playNumberSound()
+                        SoundManager.shared.playNumberSound(number: currentNumber.value)
                     } label: {
                         Text("\(currentNumber.value)")
                             .font(.system(size: 164, weight: .bold, design: .rounded))
@@ -62,16 +62,14 @@ struct NumbersView: View {
 
     private func showPreviousNumber() {
         guard currentIndex > 0 else { return }
+        SoundManager.shared.playTapSound()
         currentIndex -= 1
     }
 
     private func showNextNumber() {
         guard currentIndex < numbers.count - 1 else { return }
+        SoundManager.shared.playTapSound()
         currentIndex += 1
-    }
-
-    private func playNumberSound() {
-        // Audio will be added in a later MVP pass.
     }
 }
 

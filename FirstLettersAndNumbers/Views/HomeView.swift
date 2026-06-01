@@ -29,18 +29,27 @@ struct HomeView: View {
                         } label: {
                             PrimaryNavigationButton(title: "Letters", systemImage: "textformat.abc", color: CalmDesign.ColorPalette.gentleGreen)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            SoundManager.shared.playTapSound()
+                        })
 
                         NavigationLink {
                             NumbersView()
                         } label: {
                             PrimaryNavigationButton(title: "Numbers", systemImage: "number", color: CalmDesign.ColorPalette.gentleBlue)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            SoundManager.shared.playTapSound()
+                        })
 
                         NavigationLink {
                             ParentGateView()
                         } label: {
                             PrimaryNavigationButton(title: "Parents", systemImage: "lock.shield", color: CalmDesign.ColorPalette.softPeach)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            SoundManager.shared.playTapSound()
+                        })
                     }
                     .buttonStyle(.plain)
                     .frame(maxWidth: CalmDesign.Layout.controlMaxWidth)

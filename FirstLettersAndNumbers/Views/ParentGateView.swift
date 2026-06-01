@@ -19,6 +19,18 @@ struct ParentGateView: View {
         }
         .navigationTitle("Parents")
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: musicEnabled) { _, isEnabled in
+            if isEnabled {
+                SoundManager.shared.playBackgroundMusic()
+            } else {
+                SoundManager.shared.stopBackgroundMusic()
+            }
+        }
+        .onChange(of: soundEnabled) { _, isEnabled in
+            if !isEnabled {
+                SoundManager.shared.stopEffectSounds()
+            }
+        }
     }
 
     private var gateContent: some View {
@@ -93,10 +105,13 @@ struct ParentGateView: View {
     }
 
     private func checkAnswer() {
+        SoundManager.shared.playTapSound()
+
         let trimmedAnswer = answer.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmedAnswer == "7" {
             showError = false
             isUnlocked = true
+            SoundManager.shared.playSuccessSound()
         } else {
             showError = true
         }
